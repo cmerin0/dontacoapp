@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "484855311457",
+    "project_id": "dontacoapp",
+    "storage_bucket": "dontacoapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:484855311457:android:fe10d98c184abca52b8e20",
+        "android_client_info": {
+          "package_name": "com.example.dontaco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "484855311457-5klm2qg6i7r9fncolhtjei0h5dh8hef1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMvEMFdA6Rw8mgg0vxspfHQ1RAxml0qpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "484855311457-5klm2qg6i7r9fncolhtjei0h5dh8hef1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
