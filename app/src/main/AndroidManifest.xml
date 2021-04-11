@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DonTaco">
-        <activity android:name=".CreateProduct"></activity>
+        <activity android:name=".ShowOrders"></activity>
+        <activity android:name=".CreateProduct" />
         <activity android:name=".AddProductCart" />
         <activity android:name=".CreateOrder">
             <intent-filter>

@@ -1,6 +1,7 @@
 package com.example.dontaco.datos;
 
 public class Product {
+    private String id;
     private String name;
     private String price;
 
@@ -8,10 +9,22 @@ public class Product {
     }
 
     public Product(String name, String price) {
+        this.id = "";
         this.name = name;
         this.price = price;
     }
 
+    public String toString() {
+        return this.name + " - $" + this.price;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;

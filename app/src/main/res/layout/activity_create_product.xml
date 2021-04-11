@@ -19,11 +19,11 @@
         android:layout_marginHorizontal="10dp" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/textViewTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Agregar producto"
+        android:text="Crear producto"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
