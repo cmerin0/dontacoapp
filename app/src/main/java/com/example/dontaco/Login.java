@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,35 +20,37 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class Login extends AppCompatActivity {
 
-    private EditText emailTV, passwordTV;
-    private Button loginBtn;
-    private ProgressBar progressBar;
-
+    private EditText etEmail, etPassword;
+    private TextView tvNologin;
+    private Button btnLogin;
     private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         mAuth = FirebaseAuth.getInstance();
-
         initializeUI();
-
-        loginBtn.setOnClickListener(new View.OnClickListener() {
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loginUserAccount();
             }
         });
+        tvNologin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(Login.this, IndexActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void loginUserAccount() {
-        progressBar.setVisibility(View.VISIBLE);
 
         String email, password;
-        email = emailTV.getText().toString();
-        password = passwordTV.getText().toString();
+        email = etEmail.getText().toString();
+        password = etPassword.getText().toString();
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Please enter email...", Toast.LENGTH_LONG).show();
@@ -64,24 +67,20 @@ public class Login extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
-                            progressBar.setVisibility(View.GONE);
-
-                            Intent intent = new Intent(Login.this, IndexActivity.class);
-                            startActivity(intent);
+                            Intent i = new Intent(Login.this, IndexActivity.class);
+                            startActivity(i);
                         }
                         else {
                             Toast.makeText(getApplicationContext(), "Login failed! Please try again later", Toast.LENGTH_LONG).show();
-                            progressBar.setVisibility(View.GONE);
                         }
                     }
                 });
     }
 
     private void initializeUI() {
-        emailTV = findViewById(R.id.email);
-        passwordTV = findViewById(R.id.password);
-
-        loginBtn = findViewById(R.id.login);
-        progressBar = findViewById(R.id.progressBar);
+        etEmail= findViewById(R.id.etEmail);
+        etPassword = findViewById(R.id.etPassword);
+        btnLogin = findViewById(R.id.btnLogin);
+        tvNologin = findViewById(R.id.tvNologin);
     }
 }
