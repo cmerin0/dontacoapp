@@ -11,37 +11,41 @@
         android:id="@+id/btnReturn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Regresar"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="132dp"
-
+        android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="10dp"
-        android:layout_marginHorizontal="10dp" />
+        android:text="Regresar"
+
+        android:textColor="@color/primary_color"
+        app:backgroundTint="#FFFFFF"
+        app:strokeColor="@color/primary_color"
+        app:strokeWidth="2dp"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="132dp" />
 
     <Button
         android:id="@+id/btnCreateProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Crear producto"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="132dp"
-
+        android:layout_marginHorizontal="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginHorizontal="10dp" />
+        android:text="Crear producto"
+
+        app:backgroundTint="@color/primary_color"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="132dp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Ver productos actuales"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        />
+        android:text="Ver productos actuales"
+        android:textAlignment="center"
+        android:textColor="@color/primary_color"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <ListView
         android:id="@+id/listViewProducts"

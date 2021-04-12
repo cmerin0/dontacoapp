@@ -11,45 +11,47 @@
         android:id="@+id/btnCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ver carrito"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="132dp"
-
+        android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10dp"
-        android:layout_marginHorizontal="10dp" />
+        android:text="Ver carrito"
+
+        app:backgroundTint="@color/primary_color"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="132dp" />
 
     <Button
         android:id="@+id/btnShowOrders"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Ver historial de compras"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="132dp"
+        android:layout_marginHorizontal="10dp"
+        android:text="Ver historial de pedidos"
+        app:backgroundTint="@color/primary_color"
 
-        android:layout_marginHorizontal="10dp" />
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="132dp" />
 
     <Button
         android:id="@+id/btnShowProducts"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
         android:text="Modificar productos"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="132dp"
+        app:backgroundTint="@color/primary_color"
 
-        android:layout_marginHorizontal="10dp" />
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="132dp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Productos"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
         android:layout_marginTop="20dp"
-        />
+        android:text="Productos disponibles"
+        android:textAlignment="center"
+        android:textColor="@color/primary_color"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView4"

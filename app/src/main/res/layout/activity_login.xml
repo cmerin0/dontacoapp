@@ -11,12 +11,12 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Iniciar sesión"
         android:layout_gravity="center_horizontal"
-        android:textAlignment="center"
-        android:textSize="30dp"
         android:padding="20dp"
-        android:textColor="@color/black"
+        android:text="Iniciar sesión"
+        android:textAlignment="center"
+        android:textColor="@color/primary_color"
+        android:textSize="30dp"
         android:textStyle="bold" />
 
     <ImageView
@@ -56,7 +56,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Iniciar Sesión" />
+        android:text="Iniciar Sesión"
+        app:backgroundTint="@color/primary_color" />
 
     <Space
         android:layout_width="match_parent"

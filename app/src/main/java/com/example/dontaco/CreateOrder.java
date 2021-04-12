@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class CreateOrder extends AppCompatActivity {
-    Button btnShowProducts, btnShowOrders;
+    Button btnShowProducts, btnShowOrders, btnCart;
 
     DatabaseReference mDatabase;
 
@@ -41,6 +41,7 @@ public class CreateOrder extends AppCompatActivity {
     protected void initializeElements() {
         btnShowProducts = findViewById(R.id.btnShowProducts);
         btnShowOrders = findViewById(R.id.btnShowOrders);
+        btnCart = findViewById(R.id.btnCart);
 
         btnShowProducts.setOnClickListener(v -> {
             Intent i = new Intent(CreateOrder.this, ShowProducts.class);
@@ -49,6 +50,11 @@ public class CreateOrder extends AppCompatActivity {
 
         btnShowOrders.setOnClickListener(v -> {
             Intent i = new Intent(CreateOrder.this, ShowOrders.class);
+            startActivity(i);
+        });
+
+        btnCart.setOnClickListener(v -> {
+            Intent i = new Intent(CreateOrder.this, Cart.class);
             startActivity(i);
         });
 

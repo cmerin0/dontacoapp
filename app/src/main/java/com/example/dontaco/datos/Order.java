@@ -1,6 +1,7 @@
 package com.example.dontaco.datos;
 
 public class Order {
+    private String id;
     private String productId;
     private String productName;
     private String productPrice;
@@ -19,6 +20,20 @@ public class Order {
         this.total = String.valueOf(Double.parseDouble(this.productPrice) * Integer.parseInt(this.quantity));
     }
 
+    public String toString() {
+        return "Producto: " + this.productName + "\n" +
+               "Precio unitario: $" + this.productPrice + "\n" +
+               "Cantidad: " + this.quantity + "\n" +
+               "Total: $" + this.total;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getProductId() {
         return productId;
