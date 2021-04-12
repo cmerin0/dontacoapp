@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.dontaco.datos.Order;
+import com.example.dontaco.datos.OrderProduct;
 import com.example.dontaco.datos.Product;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,10 +37,12 @@ public class Cart extends AppCompatActivity {
     DatabaseReference mDatabase;
 
     ListView listViewProducts;
-    ArrayList<Order> arrayListOrder;
-    ArrayAdapter<Order> arrayAdapterOrders;
+    ArrayList<OrderProduct> arrayListOrderProduct;
+    ArrayAdapter<OrderProduct> arrayAdapterOrders;
 
     String userId;
+    int quantityProducts = 0;
+    double sumTotals = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +69,11 @@ public class Cart extends AppCompatActivity {
         });
 
         btnFinishOrder.setOnClickListener(v -> {
-
+            finishOrder();
         });
 
-        arrayListOrder = new ArrayList<>();
-        arrayAdapterOrders = new ArrayAdapter<>(Cart.this, android.R.layout.simple_list_item_1, arrayListOrder);
+        arrayListOrderProduct = new ArrayList<>();
+        arrayAdapterOrders = new ArrayAdapter<>(Cart.this, android.R.layout.simple_list_item_1, arrayListOrderProduct);
 
         listViewProducts = findViewById(R.id.listViewProducts);
         listViewProducts.setAdapter(arrayAdapterOrders);
@@ -80,12 +83,12 @@ public class Cart extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(Cart.this, CreateProduct.class);
                 i.putExtra("edit", true);
-                i.putExtra("id", arrayListOrder.get(position).getId());
-                i.putExtra("productId", arrayListOrder.get(position).getProductId());
-                i.putExtra("productName", arrayListOrder.get(position).getProductName());
-                i.putExtra("productPrice", arrayListOrder.get(position).getProductPrice());
-                i.putExtra("quantity", arrayListOrder.get(position).getQuantity());
-                i.putExtra("total", arrayListOrder.get(position).getTotal());
+                i.putExtra("id", arrayListOrderProduct.get(position).getId());
+                i.putExtra("productId", arrayListOrderProduct.get(position).getProductId());
+                i.putExtra("productName", arrayListOrderProduct.get(position).getProductName());
+                i.putExtra("productPrice", arrayListOrderProduct.get(position).getProductPrice());
+                i.putExtra("quantity", arrayListOrderProduct.get(position).getQuantity());
+                i.putExtra("total", arrayListOrderProduct.get(position).getTotal());
                 startActivity(i);
             }
         });
@@ -100,7 +103,7 @@ public class Cart extends AppCompatActivity {
                 builder.setPositiveButton("Eliminar", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         try {
-                            mDatabase.child("cart").child(userId).child(arrayListOrder.get(position).getId()).removeValue();
+                            mDatabase.child("cart").child(userId).child(arrayListOrderProduct.get(position).getId()).removeValue();
                             Toast.makeText(Cart.this, "El producto ha sido eliminado correctamente del carrito", Toast.LENGTH_LONG).show();
                         }
                         catch (Exception e){
@@ -129,20 +132,20 @@ public class Cart extends AppCompatActivity {
         return new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int quantityProducts = 0;
-                double sumTotals = 0;
+                quantityProducts = 0;
+                sumTotals = 0;
 
-                arrayListOrder.clear();
+                arrayListOrderProduct.clear();
 
                 for (DataSnapshot orderSnapshot : snapshot.child("cart").child(userId).getChildren()) {
-                    Order order = orderSnapshot.getValue(Order.class);
-                    order.setId(orderSnapshot.getKey());
+                    OrderProduct orderProduct = orderSnapshot.getValue(OrderProduct.class);
+                    orderProduct.setId(orderSnapshot.getKey());
 
-                    arrayListOrder.add(order);
+                    arrayListOrderProduct.add(orderProduct);
                     arrayAdapterOrders.notifyDataSetChanged();
 
                     quantityProducts++;
-                    sumTotals += Double.parseDouble(order.getTotal());
+                    sumTotals += Double.parseDouble(orderProduct.getTotal());
                 }
 
                 textViewQuantity.setText("Cantidad de productos: " + quantityProducts);
@@ -150,9 +153,26 @@ public class Cart extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
+            public void onCancelled(@NonNull DatabaseError error) {}
         };
+    }
+
+    protected void finishOrder() {
+        Order order = new Order(String.valueOf(quantityProducts), String.valueOf(sumTotals));
+
+        if(quantityProducts > 0) {
+            try {
+                mDatabase.child("orders").child(userId).push().setValue(order);
+                mDatabase.child("cart").child(userId).removeValue();
+                Toast.makeText(Cart.this, "La orden se ha procesado correctamente", Toast.LENGTH_LONG).show();
+                finish();
+            }
+            catch (Exception e){
+                Toast.makeText(Cart.this, "Hubo un error procesar la orden", Toast.LENGTH_LONG).show();
+            }
+        }
+        else {
+            Toast.makeText(Cart.this, "Debe de agregar al menos un producto al carrito para procesar el pedido", Toast.LENGTH_LONG).show();
+        }
     }
 }

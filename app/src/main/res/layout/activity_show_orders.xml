@@ -29,7 +29,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:text="Historial de compras realizadas"
+        android:text="Su historial de compras"
         android:textAlignment="center"
         android:textColor="@color/primary_color"
         android:textSize="24sp"

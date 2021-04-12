@@ -9,15 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DonTaco">
-        <activity android:name=".Cart"></activity>
+        <activity android:name=".Register"></activity>
+        <activity android:name=".Cart" />
         <activity android:name=".ShowOrders" />
         <activity android:name=".CreateProduct" />
         <activity android:name=".AddProductCart" />
-        <activity android:name=".CreateOrder">
-        </activity>
+        <activity android:name=".CreateOrder"></activity>
         <activity android:name=".ShowProducts" />
-        <activity android:name=".Login">
-        </activity>
+        <activity android:name=".Login"></activity>
         <activity android:name=".IndexActivity" />
         <activity
             android:name=".MainActivity"

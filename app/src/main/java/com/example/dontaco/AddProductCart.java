@@ -1,27 +1,18 @@
 package com.example.dontaco;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.dontaco.datos.Order;
-import com.example.dontaco.datos.Product;
+import com.example.dontaco.datos.OrderProduct;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.ArrayList;
 
 public class AddProductCart extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -82,10 +73,10 @@ public class AddProductCart extends AppCompatActivity {
             Toast.makeText(AddProductCart.this, "Debe colocar la cantidad de productos que desea", Toast.LENGTH_LONG).show();
         }
         else {
-            Order order = new Order(productId, productName, productPrice, editTextQuantity.getText().toString());
+            OrderProduct orderProduct = new OrderProduct(productId, productName, productPrice, editTextQuantity.getText().toString());
 
             try {
-                mDatabase.child("cart").child(userId).push().setValue(order);
+                mDatabase.child("cart").child(userId).push().setValue(orderProduct);
 
                 Toast.makeText(AddProductCart.this, "El producto ha sido agregado correctamente al carrito", Toast.LENGTH_LONG).show();
                 finish();

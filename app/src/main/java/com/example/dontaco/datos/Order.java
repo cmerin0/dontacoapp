@@ -1,71 +1,47 @@
 package com.example.dontaco.datos;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class Order {
-    private String id;
-    private String productId;
-    private String productName;
-    private String productPrice;
-    private String quantity;
-    private String total;
+    private String productsQuantity;
+    private String productsTotal;
+    private String date;
 
     public Order() {
     }
 
-    public Order(String productId, String productName, String productPrice, String quantity) {
-        this.productId = productId;
-        this.productName = productName;
-        this.productPrice = productPrice;
-        this.quantity = quantity;
+    public Order(String productsQuantity, String productsTotal) {
+        this.productsQuantity = productsQuantity;
+        this.productsTotal = productsTotal;
 
-        this.total = String.valueOf(Double.parseDouble(this.productPrice) * Integer.parseInt(this.quantity));
+        Date currentTime = Calendar.getInstance().getTime();
+        this.date = currentTime.toString();
     }
 
     public String toString() {
-        return "Producto: " + this.productName + "\n" +
-               "Precio unitario: $" + this.productPrice + "\n" +
-               "Cantidad: " + this.quantity + "\n" +
-               "Total: $" + this.total;
+        return "Fecha de compra: " + this.date + "\n" +
+               "Cantidad de productos: " + this.productsQuantity + "\n" +
+               "Total pagado: $" + this.productsTotal + "\n";
     }
 
-    public String getId() {
-        return id;
+    public String getProductsQuantity() {
+        return productsQuantity;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setProductsQuantity(String productsQuantity) {
+        this.productsQuantity = productsQuantity;
     }
 
-    public String getProductId() {
-        return productId;
+    public String getProductsTotal() {
+        return productsTotal;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setProductsTotal(String productsTotal) {
+        this.productsTotal = productsTotal;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getDate() {
+        return date;
     }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getProductPrice() {
-        return productPrice;
-    }
-
-    public void setProductPrice(String productPrice) {
-        this.productPrice = productPrice;
-    }
-
-    public String getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
-    }
-
-    public String getTotal() { return total; }
 }
