@@ -81,12 +81,14 @@ public class CreateProduct extends AppCompatActivity {
             try {
                 if(!editProduct) {
                     mDatabase.child("products").push().setValue(product);
+                    Toast.makeText(CreateProduct.this, "El producto ha sido agregado correctamente", Toast.LENGTH_LONG).show();
                 }
                 else {
                     mDatabase.child("products").child(productId).setValue(product);
+                    Toast.makeText(CreateProduct.this, "El producto ha sido modificado correctamente", Toast.LENGTH_LONG).show();
                 }
 
-                Toast.makeText(CreateProduct.this, "El producto ha sido agregado correctamente", Toast.LENGTH_LONG).show();
+                finish();
             }
             catch (Exception e){
                 Toast.makeText(CreateProduct.this, "Hubo un error al agregar el producto", Toast.LENGTH_LONG).show();

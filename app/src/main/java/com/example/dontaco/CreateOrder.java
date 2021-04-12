@@ -10,8 +10,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.dontaco.datos.Product;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,7 +24,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class CreateOrder extends AppCompatActivity {
-    Button btnShowProducts, btnShowOrders, btnCart;
+    private FirebaseAuth mAuth;
+
+    TextView textViewUser;
+    Button btnShowProducts, btnShowOrders, btnCart, btnLogout;
 
     DatabaseReference mDatabase;
 
@@ -29,10 +35,16 @@ public class CreateOrder extends AppCompatActivity {
     ArrayList<Product> arrayListProducts;
     ArrayAdapter<Product> arrayAdapterProducts;
 
+    String userEmail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_order);
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        userEmail = user.getEmail();
 
         initializeElements();
         initializeDatabase();
@@ -42,6 +54,10 @@ public class CreateOrder extends AppCompatActivity {
         btnShowProducts = findViewById(R.id.btnShowProducts);
         btnShowOrders = findViewById(R.id.btnShowOrders);
         btnCart = findViewById(R.id.btnCart);
+        btnLogout = findViewById(R.id.btnLogout);
+
+        textViewUser = findViewById(R.id.textViewUser);
+        textViewUser.setText("Bienvenido, " + userEmail);
 
         btnShowProducts.setOnClickListener(v -> {
             Intent i = new Intent(CreateOrder.this, ShowProducts.class);
@@ -58,6 +74,13 @@ public class CreateOrder extends AppCompatActivity {
             startActivity(i);
         });
 
+        btnLogout.setOnClickListener(v -> {
+            mAuth.signOut();
+
+            Intent i = new Intent(CreateOrder.this, Login.class);
+            startActivity(i);
+        });
+
         arrayListProducts = new ArrayList<>();
         arrayAdapterProducts = new ArrayAdapter<>(CreateOrder.this, android.R.layout.simple_list_item_1, arrayListProducts);
 
@@ -68,10 +91,10 @@ public class CreateOrder extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(CreateOrder.this, AddProductCart.class);
-                i.putExtra("edit", true);
-                i.putExtra("id", arrayListProducts.get(position).getId());
-                i.putExtra("name", arrayListProducts.get(position).getName());
-                i.putExtra("price", arrayListProducts.get(position).getPrice());
+                i.putExtra("editOrderProduct", false);
+                i.putExtra("productId", arrayListProducts.get(position).getId());
+                i.putExtra("productName", arrayListProducts.get(position).getName());
+                i.putExtra("productPrice", arrayListProducts.get(position).getPrice());
                 startActivity(i);
             }
         });

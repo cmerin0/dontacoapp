@@ -81,14 +81,13 @@ public class Cart extends AppCompatActivity {
         listViewProducts.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(Cart.this, CreateProduct.class);
-                i.putExtra("edit", true);
-                i.putExtra("id", arrayListOrderProduct.get(position).getId());
+                Intent i = new Intent(Cart.this, AddProductCart.class);
+                i.putExtra("editOrderProduct", true);
+                i.putExtra("orderProductId", arrayListOrderProduct.get(position).getId());
                 i.putExtra("productId", arrayListOrderProduct.get(position).getProductId());
                 i.putExtra("productName", arrayListOrderProduct.get(position).getProductName());
                 i.putExtra("productPrice", arrayListOrderProduct.get(position).getProductPrice());
-                i.putExtra("quantity", arrayListOrderProduct.get(position).getQuantity());
-                i.putExtra("total", arrayListOrderProduct.get(position).getTotal());
+                i.putExtra("productQuantity", arrayListOrderProduct.get(position).getQuantity());
                 startActivity(i);
             }
         });

@@ -17,13 +17,14 @@ import com.google.firebase.database.FirebaseDatabase;
 public class AddProductCart extends AppCompatActivity {
     private FirebaseAuth mAuth;
 
-    TextView textViewName, textViewPrice;
+    TextView textViewTitle, textViewName, textViewPrice;
     EditText editTextQuantity;
     Button btnReturn, btnAddProduct;
 
     DatabaseReference mDatabase;
 
-    String userId, productId, productName, productPrice;
+    boolean editOrderProduct;
+    String orderProductId, userId, productId, productName, productPrice, productQuantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +36,23 @@ public class AddProductCart extends AppCompatActivity {
         userId = user.getUid();
 
         Bundle extras = getIntent().getExtras();
-        productId = extras.getString("id");
-        productName = extras.getString("name");
-        productPrice = extras.getString("price");
+        editOrderProduct = extras.getBoolean("editOrderProduct");
+
+        productId = extras.getString("productId");
+        productName = extras.getString("productName");
+        productPrice = extras.getString("productPrice");
+
+        if(editOrderProduct) {
+            orderProductId = extras.getString("orderProductId");
+            productQuantity = extras.getString("productQuantity");
+        }
 
         initializeElements();
         initializeDatabase();
     }
 
     protected void initializeElements() {
+        textViewTitle = findViewById(R.id.textViewTitle);
         textViewName = findViewById(R.id.textViewName);
         textViewPrice = findViewById(R.id.textViewPrice);
 
@@ -54,6 +63,12 @@ public class AddProductCart extends AppCompatActivity {
 
         btnReturn = findViewById(R.id.btnReturn);
         btnAddProduct = findViewById(R.id.btnAddProduct);
+
+        if(editOrderProduct) {
+            textViewTitle.setText("Modificar producto del carrito");
+            editTextQuantity.setText(productQuantity);
+            btnAddProduct.setText("Modificar producto");
+        }
 
         btnReturn.setOnClickListener(v -> {
             finish();
@@ -76,9 +91,16 @@ public class AddProductCart extends AppCompatActivity {
             OrderProduct orderProduct = new OrderProduct(productId, productName, productPrice, editTextQuantity.getText().toString());
 
             try {
-                mDatabase.child("cart").child(userId).push().setValue(orderProduct);
+                if(!editOrderProduct) {
+                    mDatabase.child("cart").child(userId).push().setValue(orderProduct);
+                    Toast.makeText(AddProductCart.this, "El producto ha sido agregado correctamente al carrito", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    mDatabase.child("cart").child(userId).child(orderProductId).setValue(orderProduct);
+                    Toast.makeText(AddProductCart.this, "El producto a comprar se ha modificado correctamente", Toast.LENGTH_LONG).show();
+                }
 
-                Toast.makeText(AddProductCart.this, "El producto ha sido agregado correctamente al carrito", Toast.LENGTH_LONG).show();
+
                 finish();
             }
             catch (Exception e){

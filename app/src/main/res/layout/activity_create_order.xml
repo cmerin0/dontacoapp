@@ -7,39 +7,76 @@
     android:orientation="vertical"
     tools:context=".ShowProducts">
 
-    <Button
-        android:id="@+id/btnCart"
+    <TextView
+        android:id="@+id/textViewUser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Bienvenido, usuario@correo.com"
+        android:textAlignment="center"
+        android:textColor="@color/primary_color"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"
         android:layout_marginTop="10dp"
-        android:text="Ver carrito"
+        />
 
-        app:backgroundTint="@color/primary_color"
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="132dp" />
-
-    <Button
-        android:id="@+id/btnShowOrders"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:text="Ver historial de pedidos"
-        app:backgroundTint="@color/primary_color"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="10dp"
 
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="132dp" />
+            android:text="Ver carrito"
 
-    <Button
-        android:id="@+id/btnShowProducts"
+            app:backgroundTint="@color/primary_color"
+            tools:layout_editor_absoluteX="17dp"
+            tools:layout_editor_absoluteY="132dp" />
+
+        <Button
+            android:id="@+id/btnShowOrders"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"
+            android:text="Ver historial de pedidos"
+            app:backgroundTint="@color/primary_color"
+
+            tools:layout_editor_absoluteX="17dp"
+            tools:layout_editor_absoluteY="132dp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:text="Modificar productos"
-        app:backgroundTint="@color/primary_color"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnShowProducts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="Modificar productos"
+            app:backgroundTint="@color/primary_color"
 
-        tools:layout_editor_absoluteX="17dp"
-        tools:layout_editor_absoluteY="132dp" />
+            tools:layout_editor_absoluteX="17dp"
+            tools:layout_editor_absoluteY="132dp" />
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:text="Cerrar sesión"
+            app:backgroundTint="@color/primary_color"
+
+            tools:layout_editor_absoluteX="17dp"
+            tools:layout_editor_absoluteY="132dp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textView3"

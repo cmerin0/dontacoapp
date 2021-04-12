@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Login extends AppCompatActivity {
 
     private EditText etEmail, etPassword;
-    private TextView tvNologin;
+    private TextView tvRegister;
     private Button btnLogin;
     private FirebaseAuth mAuth;
 
@@ -30,17 +30,20 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
+
         initializeUI();
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loginUserAccount();
             }
         });
-        tvNologin.setOnClickListener(new View.OnClickListener() {
+
+        tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent i = new Intent(Login.this, IndexActivity.class);
+                Intent i = new Intent(Login.this, Register.class);
                 startActivity(i);
             }
         });
@@ -53,11 +56,11 @@ public class Login extends AppCompatActivity {
         password = etPassword.getText().toString();
 
         if (TextUtils.isEmpty(email)) {
-            Toast.makeText(getApplicationContext(), "Please enter email...", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Por favor ingrese su correo electrónico...", Toast.LENGTH_LONG).show();
             return;
         }
         if (TextUtils.isEmpty(password)) {
-            Toast.makeText(getApplicationContext(), "Please enter password!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Por favor ingrese su contraseña!", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -81,6 +84,6 @@ public class Login extends AppCompatActivity {
         etEmail= findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
-        tvNologin = findViewById(R.id.tvNologin);
+        tvRegister = findViewById(R.id.tvRegister);
     }
 }

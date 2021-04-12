@@ -64,13 +64,14 @@
         android:layout_height="20dp" />
 
     <TextView
-        android:id="@+id/tvNologin"
+        android:id="@+id/tvRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textAlignment="center"
-        android:textColor="#2196F3"
+        android:textColor="@color/primary_color"
         android:clickable="true"
-        android:text="Omitir Log In" />
+        android:textStyle="bold"
+        android:text="¿No tiene una cuenta? Regístrese aquí" />
 
 </LinearLayout>
