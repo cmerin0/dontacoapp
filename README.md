@@ -13,8 +13,8 @@ Antes de proceder a realizar el proceso de instalacion, es importante poseer una
 
 # Links de Importancia 
 
-Repositorio de la App: https://github.com/cmerin0/dontacoapp/
-Firebase: https://dontacoapp-default-rtdb.firebaseio.com/ (Solicitar Acceso)
++ Repositorio de la App: https://github.com/cmerin0/dontacoapp/
++ Firebase: https://dontacoapp-default-rtdb.firebaseio.com/ (Solicitar Acceso)
 
 # Guia de Instalacion 
 
@@ -34,8 +34,8 @@ Firebase: https://dontacoapp-default-rtdb.firebaseio.com/ (Solicitar Acceso)
 
 # Autores
 
-+ Jaime Eduardo Navarrete Cubias 
-+ Carlos Enrique Merino Navarro
++ Jaime Eduardo Navarrete Cubias - NC180383
++ Carlos Enrique Merino Navarro - MN182254
 
 # Licencia
 
