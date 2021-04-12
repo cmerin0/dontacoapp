@@ -13,6 +13,7 @@ Antes de proceder a realizar el proceso de instalacion, es importante poseer una
 
 # Links de Importancia 
 
++ Enlace de los Mockups: https://www.figma.com/proto/58TWMU3Cn38TrNBV5YBexG/Segundo-desaf%C3%ADo-pr%C3%A1ctico---DSM?node-id=0%3A1&scaling=min-zoom&page-id=0%3A1
 + Repositorio de la App: https://github.com/cmerin0/dontacoapp/
 + Firebase: https://dontacoapp-default-rtdb.firebaseio.com/ (Solicitar Acceso)
 
