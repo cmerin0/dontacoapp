@@ -1,6 +1,6 @@
 # Don Taco App
 
-Aplicacion de compra de productos alimenticios del restaurante Don Taco.
+Aplicacion para telefonos moviels que permite la compra de los diferentes platillos, bebidas y postres ofrecidos por el restaurante Don Taco.
 
 # Antes de Comenzar 
 
