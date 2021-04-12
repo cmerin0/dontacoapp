@@ -19,7 +19,7 @@
         android:layout_marginHorizontal="10dp" />
 
     <Button
-        android:id="@+id/btnOrders"
+        android:id="@+id/btnShowOrders"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ver historial de compras"
@@ -56,7 +56,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Seleccione un producto que desee agregar"
+        android:text="Seleccione un producto que desee agregar al carrito"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="16sp"

@@ -9,22 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DonTaco">
-        <activity android:name=".ShowOrders"></activity>
+        <activity android:name=".Cart"></activity>
+        <activity android:name=".ShowOrders" />
         <activity android:name=".CreateProduct" />
         <activity android:name=".AddProductCart" />
         <activity android:name=".CreateOrder">
+        </activity>
+        <activity android:name=".ShowProducts" />
+        <activity android:name=".Login">
+        </activity>
+        <activity android:name=".IndexActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ShowProducts" />
-        <activity android:name=".Login" />
-        <activity android:name=".IndexActivity" />
-        <activity
-            android:name=".MainActivity"
-            android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen" />
     </application>
 
 </manifest>

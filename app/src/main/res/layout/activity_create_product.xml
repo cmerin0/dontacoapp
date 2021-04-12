@@ -48,14 +48,14 @@
         android:id="@+id/editTextPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginBottom="10dp"
         android:ems="10"
         android:hint="Precio"
-        android:inputType="number"
-        tools:layout_editor_absoluteX="15dp"
-        tools:layout_editor_absoluteY="83dp"
+        android:inputType="numberDecimal"
 
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginBottom="10dp"/>
+        tools:layout_editor_absoluteX="15dp"
+        tools:layout_editor_absoluteY="83dp" />
 
     <Button
         android:id="@+id/btnCreate"

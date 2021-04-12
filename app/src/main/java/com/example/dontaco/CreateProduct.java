@@ -30,18 +30,16 @@ public class CreateProduct extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
 
-        initializeElements();
-        initializeDatabase();
-
         if(extras.getBoolean("edit")) {
             editProduct = true;
+
             productId = extras.getString("id");
             productName = extras.getString("name");
             productPrice = extras.getString("price");
-
-            textViewTitle.setText("Editar producto");
-            btnCreate.setText("Editar producto");
         }
+
+        initializeElements();
+        initializeDatabase();
     }
 
     protected void initializeElements() {
@@ -49,13 +47,16 @@ public class CreateProduct extends AppCompatActivity {
         editTextName = findViewById(R.id.editTextName);
         editTextPrice = findViewById(R.id.editTextPrice);
 
+        btnReturn = findViewById(R.id.btnReturn);
+        btnCreate = findViewById(R.id.btnCreate);
+
         if(editProduct) {
             editTextName.setText(productName);
             editTextPrice.setText(productPrice);
-        }
 
-        btnReturn = findViewById(R.id.btnReturn);
-        btnCreate = findViewById(R.id.btnCreate);
+            textViewTitle.setText("Editar producto");
+            btnCreate.setText("Editar producto");
+        }
 
         btnReturn.setOnClickListener(v -> {
             finish();
@@ -71,7 +72,7 @@ public class CreateProduct extends AppCompatActivity {
     }
 
     protected void btnCreateFunction() {
-        if(editTextName.getText().equals("") || editTextPrice.getText().equals("")) {
+        if(editTextName.getText().toString().equals("") || editTextPrice.getText().toString().equals("")) {
             Toast.makeText(CreateProduct.this, "Debe rellenar todos los campos", Toast.LENGTH_LONG).show();
         }
         else {
